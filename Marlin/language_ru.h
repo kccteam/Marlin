@@ -33,7 +33,7 @@
 #define MAPPER_D0D1                // For Cyrillic
 #define DISPLAY_CHARSET_ISO10646_5
 
-#define WELCOME_MSG                         MACHINE_NAME " Готов."
+#define WELCOME_MSG                         MACHINE_NAME " готов."
 #define MSG_SD_INSERTED                     "Карта вставлена"
 #define MSG_SD_REMOVED                      "Карта извлечена"
 #define MSG_MAIN                            "Меню"
@@ -165,5 +165,7 @@
 #define MSG_DELTA_CALIBRATE_Y               "Калибровать Y"
 #define MSG_DELTA_CALIBRATE_Z               "Калибровать Z"
 #define MSG_DELTA_CALIBRATE_CENTER          "Калибровать центр"
+#define MSG_LOWER_BED                       "Опустить стол"
+#define MSG_REHOME_Z                        "Перекалибровать Z"
 
 #endif // LANGUAGE_RU_H
