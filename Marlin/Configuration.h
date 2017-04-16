@@ -500,7 +500,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2[, E3]]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80 * 2, 80 * 2, 400, 608 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80 * 2, 80 * 2, 400 * 2, 160 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -714,7 +714,7 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR false
+#define INVERT_E0_DIR true
 #define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
@@ -740,9 +740,9 @@
 #define X_MIN_POS 0
 #define Y_MIN_POS 0
 #define Z_MIN_POS 0
-#define X_MAX_POS 310
-#define Y_MAX_POS 310
-#define Z_MAX_POS 310
+#define X_MAX_POS 305
+#define Y_MAX_POS 305
+#define Z_MAX_POS 280
 
 //===========================================================================
 //========================= Filament Runout Sensor ==========================
@@ -829,10 +829,10 @@
 
   // Set the boundaries for probing (where the probe can reach).
   #if ENABLED(VORON_NOZZLE_PROBE)
-    #define LEFT_PROBE_BED_POSITION 33
-    #define RIGHT_PROBE_BED_POSITION 208
-    #define FRONT_PROBE_BED_POSITION 33
-    #define BACK_PROBE_BED_POSITION 200
+    #define LEFT_PROBE_BED_POSITION 30
+    #define RIGHT_PROBE_BED_POSITION 280
+    #define FRONT_PROBE_BED_POSITION 30
+    #define BACK_PROBE_BED_POSITION 280
   #else
     #define LEFT_PROBE_BED_POSITION 50
     #define RIGHT_PROBE_BED_POSITION 190
@@ -892,9 +892,9 @@
 
 // Manually set the home position. Leave these undefined for automatic settings.
 // For DELTA this is the top-center of the Cartesian print volume.
-//#define MANUAL_X_HOME_POS 300
+//#define MANUAL_X_HOME_POS 0
 //#define MANUAL_Y_HOME_POS 0
-//#define MANUAL_Z_HOME_POS 0 // Distance between the nozzle to printbed after homing
+#define MANUAL_Z_HOME_POS -0.7 // Distance between the nozzle to printbed after homing, the bigger - the closer
 
 // Use "Z Safe Homing" to avoid homing with a Z probe outside the bed area.
 //
@@ -913,7 +913,7 @@
 
 // Homing speeds (mm/m)
 #define HOMING_FEEDRATE_XY (30*60)
-#define HOMING_FEEDRATE_Z  (4*60)
+#define HOMING_FEEDRATE_Z  (2*60)
 
 //=============================================================================
 //============================= Additional Features ===========================
@@ -964,7 +964,7 @@
 
 // Preheat Constants
 #define PREHEAT_1_TEMP_HOTEND 180
-#define PREHEAT_1_TEMP_BED     70
+#define PREHEAT_1_TEMP_BED     50
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
 
 #define PREHEAT_2_TEMP_HOTEND 240
@@ -1029,15 +1029,15 @@
 // Attention: This is an EXPERIMENTAL feature, in the future the G-code arguments
 // may change to add new functionality like different wipe patterns.
 //
-//#define NOZZLE_CLEAN_FEATURE
+#define NOZZLE_CLEAN_FEATURE
 
 #if ENABLED(NOZZLE_CLEAN_FEATURE)
   // Number of pattern repetitions
-  #define NOZZLE_CLEAN_STROKES  12
+  #define NOZZLE_CLEAN_STROKES  3
 
   // Specify positions as { X, Y, Z }
-  #define NOZZLE_CLEAN_START_POINT { 30, 30, (Z_MIN_POS + 1)}
-  #define NOZZLE_CLEAN_END_POINT   {100, 60, (Z_MIN_POS + 1)}
+  #define NOZZLE_CLEAN_START_POINT { 295, 295, (Z_MIN_POS + 15)}
+  #define NOZZLE_CLEAN_END_POINT   {305, 305, (Z_MIN_POS + 15)}
 
   // Moves the nozzle to the initial position
   #define NOZZLE_CLEAN_GOBACK
@@ -1158,7 +1158,7 @@
 // This option overrides the default number of encoder pulses needed to
 // produce one step. Should be increased for high-resolution encoders.
 //
-#define ENCODER_PULSES_PER_STEP 2
+#define ENCODER_PULSES_PER_STEP 4
 
 //
 // Use this option to override the number of step signals required to
@@ -1181,7 +1181,7 @@
 //
 //  Set this option if CLOCKWISE causes values to DECREASE
 //
-//#define REVERSE_ENCODER_DIRECTION
+#define REVERSE_ENCODER_DIRECTION
 
 //
 // This option reverses the encoder direction for navigating LCD menus.
@@ -1468,7 +1468,7 @@
 // Uncomment below to enable
 //#define FILAMENT_WIDTH_SENSOR
 
-#define DEFAULT_NOMINAL_FILAMENT_DIA 3.00  //Enter the diameter (in mm) of the filament generally used (3.0 mm or 1.75 mm) - this is then used in the slicer software.  Used for sensor reading validation
+#define DEFAULT_NOMINAL_FILAMENT_DIA 1.75  //Enter the diameter (in mm) of the filament generally used (3.0 mm or 1.75 mm) - this is then used in the slicer software.  Used for sensor reading validation
 
 #if ENABLED(FILAMENT_WIDTH_SENSOR)
   #define FILAMENT_SENSOR_EXTRUDER_NUM 0   //The number of the extruder that has the filament sensor (0,1,2)
